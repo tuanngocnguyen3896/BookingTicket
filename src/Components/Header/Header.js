@@ -47,6 +47,42 @@ export default class Header extends Component {
                   Register
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                    activeClassName="bg-dark text-light"
+                  className="nav-link"
+                  to="/lifecycle"
+                  tabIndex={-1}
+                >
+                  Life Cycle
+                </NavLink>
+              </li>
+           <li className="nav-item dropdown">
+  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Hook
+  </a>
+  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><NavLink className="dropdown-item" to="/usestate">useStateHook</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/btusestate">BT useStateHook</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/useeffect">useEffect</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/usecallback">UseCallBack</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/usememo">UseMemo</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/useref">UseRef</NavLink></li>
+    <li><NavLink className="dropdown-item" to="/reduxhook">ReduxHook</NavLink></li>
+  </ul>
+</li>
+                <li className="nav-item">
+                <NavLink
+                    activeClassName="bg-dark text-light"
+                  className="nav-link"
+                  to="/details/:id"
+                  tabIndex={-1}
+                >
+                  Details
+                </NavLink>
+              </li>
+              
+            
             </ul>
             <form className="d-flex">
               <input

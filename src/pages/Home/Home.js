@@ -1,28 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
-export default class Home extends Component {
-  state = {
-    arrFilms: [],
-  };
+import {connect} from 'react-redux';
+import { layDanhSachPhimAction } from "../../redux/actions/PhimActions";
+import { NavLink } from "react-router-dom";
+class Home extends Component {
+  // state = {
+  //   arrFilms: [],
+  // };
   loadFilm = () => {
-    const promise = axios({
-      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`,
-      method: "GET",
-    });
-    // xử lí thành công
-    promise.then((result) => {
-      console.log("result:", result.data);
-      this.setState({
-        arrFilms: result.data,
-      });
-    });
-    // xử lí khi requset bị lỗi
-    promise.catch((error) => {
-      console.log("err:", error.response.data);
-    });
+    this.props.dispatch(layDanhSachPhimAction());
   };
   renderFilms = () => {
-    return this.state.arrFilms.map((film, index) => {
+    return this.props.mangPhim.map((film, index) => {
       return (
         <div key={index} className="col-4 mb-4">
           <div className="card text-white bg-dark">
@@ -34,6 +23,7 @@ export default class Home extends Component {
             />
             <div className="card-body">
               <h4 className="card-title">{film.tenPhim}</h4>
+              <NavLink className="btn btn-success" to={`details/${film.maPhim}`} >Đặt vé</NavLink>
             </div>
           </div>
         </div>
@@ -67,3 +57,7 @@ export default class Home extends Component {
   }
   
 }
+const mapStateToProps = state =>({
+  mangPhim: state.PhimReducer.mangPhim,
+})
+export default connect (mapStateToProps,null)(Home);
